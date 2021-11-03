@@ -1,11 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { addItem } from "../features/shoppingCart/shoppingCartSlice";
 
-export const Book = ({ books, addToCartHandler }) => {
+export const Book = (props) => {
+  const { bookLists, dispatch } = props;
+
   const { rank } = useParams();
-  const thisBook = books.find((book) => book.rank === parseInt(rank));
+  const thisBook = bookLists.find((book) => book.rank === parseInt(rank));
   const { author, description, title, book_image, price } = thisBook;
 
+  const handleAddItem = (itemToAdd) => {
+    dispatch(addItem(itemToAdd));
+  };
   return (
     <div
       style={{
@@ -61,7 +67,7 @@ export const Book = ({ books, addToCartHandler }) => {
         <h4 style={{ color: "rgb(59, 82, 63)" }}>AUD$ {price}</h4>
 
         <button
-          onClick={addToCartHandler}
+          onClick={() => handleAddItem(thisBook)}
           value={title}
           style={{
             padding: 10,

@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Button from "@mui/material/Button";
 
-export const DisplayRank = ({ bookinfo, addToCartHandler }) => {
+export const DisplayRank = (props) => {
+  const { handleAddItem, bookinfo } = props;
   const { rank, author, title, book_image, price } = bookinfo;
 
   return (
@@ -17,7 +18,7 @@ export const DisplayRank = ({ bookinfo, addToCartHandler }) => {
         <h4>${price}</h4>
 
         <Button
-          onClick={addToCartHandler}
+          onClick={handleAddItem} //怎么传递是哪一个button被点击
           startIcon={<AddShoppingCartIcon />}
           variant="outlined"
           size="small"

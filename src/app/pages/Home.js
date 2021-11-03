@@ -1,33 +1,37 @@
 import React from "react";
 import { SearchBar } from "../features/searchBar/SearchBar";
-import { Ranks } from "../components/Ranks";
+import { BookLists } from "../features/booklists/BookLists";
 
-export const Home = ({
-  addToCartHandler,
-  topBooks,
-  handleSubmit,
-  refContainer,
-  handleSearch,
-  searchInfo,
-  handleBlur,
-  selectHandler,
-  isSelect,
-}) => {
+export const Home = (
+  // handleSubmit,
+  // refContainer,
+  // handleSearch,
+  // searchInfo,
+  // handleBlur,
+  // selectHandler,
+  // isSelect,
+  props
+) => {
+  const { search, bookLists, dispatch } = props;
+
   return (
     <div>
       <div style={{ height: 100 }}></div>
 
       <SearchBar
-        handleSubmit={handleSubmit}
-        refContainer={refContainer}
-        handleSearch={handleSearch}
-        searchInfo={searchInfo}
-        handleBlur={handleBlur}
-        selectHandler={selectHandler}
-        isSelect={isSelect}
+        bookLists={bookLists}
+        search={search}
+        dispatch={dispatch}
+        // handleSubmit={handleSubmit}
+        // refContainer={refContainer}
+        // handleSearch={handleSearch}
+        // searchInfo={searchInfo}
+        // handleBlur={handleBlur}
+        // selectHandler={selectHandler}
+        // isSelect={isSelect}
       />
 
-      <Ranks topBooks={topBooks} addToCartHandler={addToCartHandler} />
+      <BookLists bookLists={bookLists} dispatch={dispatch} />
     </div>
   );
 };

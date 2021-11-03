@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export const Search = ({ searchResult }) => {
+export const Search = (props) => {
+  const { searchResult } = props;
   return (
     <div
       style={{
@@ -15,6 +16,7 @@ export const Search = ({ searchResult }) => {
         return (
           <Link
             to={"/NYTBestSellers/" + rank}
+            key={title}
             style={{
               textDecoration: "none",
               color: "rgb(59, 82, 63)",

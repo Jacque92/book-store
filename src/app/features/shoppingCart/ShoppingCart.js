@@ -1,13 +1,26 @@
 import React from "react";
 import { CartItem } from "../../components/CartItem";
 
-export const ShoppingCart = ({
-  items,
-  removeBookHandler,
-  addToCartHandler,
-  decreaseHandler,
-}) => {
-  const booksTitles = Object.keys(items);
+import { removeItem } from "./shoppingCartSlice";
+import { increaseAmount } from "./shoppingCartSlice";
+import { decreaseAmount } from "./shoppingCartSlice";
+
+export const ShoppingCart = (props) => {
+  const { cart, dispatch } = props;
+
+  const booksTitles = Object.keys(cart);
+
+  const handleRemoveItem = (itemToRemove) => {
+    dispatch(removeItem(itemToRemove));
+  };
+
+  const handleIncrease = (itemToIncrease) => {
+    dispatch(increaseAmount(itemToIncrease));
+  };
+  const handleDecrease = (itemToDecrease) => {
+    dispatch(decreaseAmount(itemToDecrease));
+  };
+
   if (booksTitles.length === 0) {
     return (
       <h1
@@ -50,11 +63,11 @@ export const ShoppingCart = ({
             return (
               <CartItem
                 key={item}
+                book={cart[item]}
                 title={item}
-                item={items[item]}
-                removeBookHandler={removeBookHandler}
-                addToCartHandler={addToCartHandler}
-                decreaseHandler={decreaseHandler}
+                handleRemoveItem={() => handleRemoveItem(item)}
+                handleDecrease={() => handleDecrease(item)}
+                handleIncrease={() => handleIncrease(item)}
               />
             );
           })}

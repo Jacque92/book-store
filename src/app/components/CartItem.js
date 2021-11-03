@@ -1,14 +1,10 @@
 import React from "react";
 import Button from "@mui/material/Button";
 
-export const CartItem = ({
-  item,
-  removeBookHandler,
-  title,
-  addToCartHandler,
-  decreaseHandler,
-}) => {
-  const { price, amount } = item;
+export const CartItem = (props) => {
+  const { title, book, handleRemoveItem, handleIncrease, handleDecrease } =
+    props;
+  const { price, amount } = book;
 
   return (
     <tr>
@@ -16,17 +12,18 @@ export const CartItem = ({
       <td style={{ width: "10%" }}>{price}</td>
 
       <td style={{ width: "15%" }}>
-        <Button size="large" onClick={decreaseHandler} value={title}>
+        <Button size="large" onClick={handleDecrease} value={title}>
           -
         </Button>
-        <input style={{ width: "20%" }} type="number" value={amount}></input>
-        <Button size="large" onClick={addToCartHandler} value={title}>
+
+        <input style={{ width: "20%" }} value={amount} readOnly></input>
+        <Button size="large" onClick={handleIncrease} value={title}>
           +
         </Button>
       </td>
-      <td style={{ width: "15%" }}>{price * amount}</td>
+      <td style={{ width: "15%" }}>{Math.floor(price * amount * 100) / 100}</td>
       <td style={{ width: "5%" }}>
-        <button onClick={() => removeBookHandler(title)}>Remove</button>
+        <button onClick={handleRemoveItem}>Remove</button>
       </td>
     </tr>
   );

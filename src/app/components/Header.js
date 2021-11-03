@@ -1,12 +1,18 @@
 import * as React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Badge from "@mui/material/Badge";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const navStyle = {};
 
-export const Header = ({ cartAmount }) => {
-  const refContainer = useRef(null);
+export const Header = (props) => {
+  const { cart } = props;
+  const amounts = Object.values(cart);
+  let cartAmount = 0;
+  amounts.map((book) => {
+    const { amount } = book;
+    return (cartAmount += amount);
+  });
 
   const initialState = {
     Home: false,

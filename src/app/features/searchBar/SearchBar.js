@@ -1,16 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { showSearchResults } from "./searchBarSlice";
 
-export const SearchBar = ({
-  handleSubmit,
-  refContainer,
-  handleSearch,
-  searchInfo,
-  selectHandler,
-}) => {
+export const SearchBar = (props) => {
+  const { search, bookLists, dispatch } = props;
+
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+
+    if (searchTerm === "") {
+      return dispatch(showSearchResults([]));
+    }
+    if (searchTerm !== "") {
+      let filterList = bookLists.filter(
+        (book) =>
+          book.title.toLowerCase().includes(searchTerm) ||
+          book.author.toLowerCase().includes(searchTerm)
+      );
+      return dispatch(showSearchResults(filterList));
+    }
+  };
+
   return (
     <form
-      onSubmit={handleSubmit}
       style={{
         width: "50%",
         margin: "auto",
@@ -23,7 +35,6 @@ export const SearchBar = ({
         className="searchInput"
         onFocus={handleSearch}
         onChange={handleSearch}
-        ref={refContainer}
         type="text"
         autoComplete="off"
         style={{
@@ -32,7 +43,10 @@ export const SearchBar = ({
           border: "none",
         }}
       ></input>
-      <Link to="/search" onClick={handleSubmit}>
+      <Link
+        to="/search"
+        //onClick={handleSubmit}
+      >
         <button
           className="test"
           type="submit"
@@ -57,14 +71,15 @@ export const SearchBar = ({
           width: 662,
         }}
       >
-        {searchInfo.map((book) => {
+        {search.map((book) => {
           const { rank, author, title, book_image } = book;
 
           return (
             <Link
+              key={title}
               to={"/NYTBestSellers/" + rank}
               className="searchResultItem"
-              onMouseDown={selectHandler}
+              // onMouseDown={selectHandler}
               style={{
                 display: "flex",
                 padding: "0.5rem",
