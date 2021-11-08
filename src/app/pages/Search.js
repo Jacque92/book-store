@@ -1,17 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { showSearchResults } from "../features/searchBar/searchBarSlice";
+import { Paper } from "@mui/material";
 export const Search = (props) => {
-  const { searchResult } = props;
+  const { search, dispatch } = props;
+  const { preSearch, searchResults } = search;
+  const handleBlur = () => {
+    dispatch(showSearchResults([]));
+  };
   return (
     <div
+      onClick={handleBlur}
       style={{
         width: "60%",
         margin: "auto",
-        marginTop: 200,
+        marginTop: 100,
       }}
     >
       <h1>Search reasult</h1>
-      {searchResult.map((book) => {
+      {searchResults.map((book) => {
         const { title, author, price, description, book_image, rank } = book;
         return (
           <Link
@@ -19,10 +26,9 @@ export const Search = (props) => {
             key={title}
             style={{
               textDecoration: "none",
-              color: "rgb(59, 82, 63)",
             }}
           >
-            <div
+            <Paper
               style={{
                 width: "100%",
                 height: 180,
@@ -45,16 +51,17 @@ export const Search = (props) => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "space-between",
+                  color: "#1a237e",
                 }}
               >
                 <div>
                   <h2>{title}</h2>
-                  <p>{author}</p>
+                  <p style={{ color: "grey" }}>{author}</p>
                 </div>
                 <h4>AUD$ {price}</h4>
                 <p style={{ overflow: "hidden" }}>{description}</p>
               </div>
-            </div>
+            </Paper>
           </Link>
         );
       })}

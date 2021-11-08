@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
 import { clearCart } from "../features/shoppingCart/shoppingCartSlice";
+import { Paper } from "@mui/material";
 
 const taxRate = 0.09;
 
@@ -22,7 +23,7 @@ export const Cart = (props) => {
   });
 
   return (
-    <div style={{ width: "80%", margin: "160px auto auto auto" }}>
+    <div style={{ width: "80%", margin: "100px auto auto auto" }}>
       <ShoppingCart cart={cart} dispatch={dispatch} />
       <Stack
         spacing={2}
@@ -33,39 +34,22 @@ export const Cart = (props) => {
           justifyContent: "space-around",
         }}
       >
-        <Button
-          variant="outlined"
-          style={{
-            borderColor: "rgb(59, 82, 63)",
-            color: "rgb(59, 82, 63)",
-          }}
-        >
-          <Link
-            to="/"
-            style={{ textDecoration: "none", color: "rgb(59, 82, 63)" }}
-          >
+        <Button variant="outlined">
+          <Link to="/" style={{ textDecoration: "none", color: "#283593" }}>
             Continue Shopping
           </Link>
         </Button>
-        <Button
-          onClick={handleClearCart}
-          variant="outlined"
-          style={{
-            borderColor: "rgb(59, 82, 63)",
-            color: "rgb(59, 82, 63)",
-          }}
-        >
+        <Button onClick={handleClearCart} variant="outlined">
           Clear Shopping Cart
         </Button>
       </Stack>
-      <div
+      <Paper
+        elevation={1}
         style={{
           width: "40%",
           margin: "0 0 0 auto",
           marginTop: 20,
           textAlign: "right",
-          border: "1px solid grey",
-          borderRadius: 4,
           padding: "1rem 2rem",
         }}
       >
@@ -95,16 +79,14 @@ export const Cart = (props) => {
         </table>
         <Button
           onClick={handleClearCart}
-          variant="outlined"
+          variant="contained"
           style={{
             marginTop: 20,
-            borderColor: "rgb(59, 82, 63)",
-            color: "rgb(59, 82, 63)",
           }}
         >
           Check Out
         </Button>
-      </div>
+      </Paper>
     </div>
   );
 };

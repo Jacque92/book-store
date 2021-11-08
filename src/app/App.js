@@ -9,44 +9,97 @@ import { Book } from "./pages/Book";
 import { Search } from "./pages/Search";
 import { Error } from "./pages/Error";
 
+//theme
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
+import { indigo } from "@mui/material/colors";
+
+import useToken from "./hooks/useToken";
+
 function App(props) {
   const { state, dispatch } = props;
 
+  const { token, setToken } = useToken();
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: indigo[800],
+      },
+      secondary: {
+        main: "#c5d4e8",
+      },
+    },
+    typography: {
+      fontFamily: [
+        "-apple-system",
+        "BlinkMacSystemFont",
+        '"Segoe UI"',
+        "Roboto",
+        '"Helvetica Neue"',
+        "Arial",
+        "sans-serif",
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(","),
+      poster: {
+        color: "red",
+      },
+    },
+  });
+
   return (
     <Router>
-      <header className="App-header">
-        <Header cart={state.cart} />
-      </header>
-      <Switch>
-        <Route path="/cart">
-          <Cart cart={state.cart} dispatch={dispatch} />
-        </Route>
-        <Route path="/logIn">
-          <LogIn logIn={state.logIn} dispatch={dispatch} />
-        </Route>
+      <ThemeProvider theme={theme}>
+        <Header
+          setToken={setToken}
+          token={token}
+          logIn={state.logIn}
+          cart={state.cart}
+          bookLists={state.bookLists}
+          search={state.search}
+          dispatch={dispatch}
+        />
+        <Switch>
+          <Route path="/cart">
+            {console.log(token)}
+            {!token ? (
+              <LogIn setToken={setToken} />
+            ) : (
+              <Cart cart={state.cart} dispatch={dispatch} />
+            )}
+          </Route>
 
-        <Route exact path="/">
-          <div>
+          <Route path="/logIn">
+            <LogIn
+              token={token}
+              setToken={setToken}
+              logIn={state.logIn}
+              dispatch={dispatch}
+            />
+          </Route>
+
+          <Route exact path="/">
             <Home
               bookLists={state.bookLists}
               search={state.search}
               dispatch={dispatch}
             />
-          </div>
-        </Route>
+          </Route>
 
-        <Route
-          path="/NYTBestSellers/:rank"
-          children={<Book bookLists={state.bookLists} dispatch={dispatch} />}
-        ></Route>
-        <Route
-          path="/search"
-          children={<Search searchResult={state.search} dispatch={dispatch} />}
-        ></Route>
-        <Route path="/*">
-          <Error />
-        </Route>
-      </Switch>
+          <Route
+            path="/NYTBestSellers/:rank"
+            children={<Book bookLists={state.bookLists} dispatch={dispatch} />}
+          ></Route>
+          <Route
+            path="/search"
+            children={<Search search={state.search} dispatch={dispatch} />}
+          ></Route>
+          <Route path="/*">
+            <Error />
+          </Route>
+        </Switch>
+      </ThemeProvider>
     </Router>
   );
 }

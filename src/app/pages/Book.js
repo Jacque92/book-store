@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { addItem } from "../features/shoppingCart/shoppingCartSlice";
+import Button from "@mui/material/Button";
 
 export const Book = (props) => {
   const { bookLists, dispatch } = props;
@@ -16,9 +17,7 @@ export const Book = (props) => {
     <div
       style={{
         width: "60%",
-
-        margin: "200px auto",
-
+        margin: "100px auto",
         display: "flex",
         flexDirection: "row",
       }}
@@ -47,38 +46,28 @@ export const Book = (props) => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-
           marginLeft: 40,
         }}
       >
         <div>
-          <h2
-            style={{
-              color: "rgb(59, 82, 63)",
-            }}
-          >
-            {title}
-          </h2>
+          <h1>{title}</h1>
 
           <p style={{}}>{author}</p>
         </div>
 
         <p style={{}}>{description}</p>
-        <h4 style={{ color: "rgb(59, 82, 63)" }}>AUD$ {price}</h4>
+        <h3>AUD$ {price}</h3>
 
-        <button
+        <Button
+          variant="contained"
           onClick={() => handleAddItem(thisBook)}
           value={title}
           style={{
-            padding: 10,
-            height: 30,
-            color: "rgb(59, 82, 63)",
-            border: "1px solid rgb(59, 82, 63)",
             width: "50%",
           }}
         >
           Add To Cart
-        </button>
+        </Button>
       </div>
     </div>
   );

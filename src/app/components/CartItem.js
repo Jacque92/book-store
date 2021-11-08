@@ -23,7 +23,7 @@ export const CartItem = (props) => {
       </td>
       <td style={{ width: "15%" }}>{Math.floor(price * amount * 100) / 100}</td>
       <td style={{ width: "5%" }}>
-        <button onClick={handleRemoveItem}>Remove</button>
+        <Button onClick={handleRemoveItem}>Remove</Button>
       </td>
     </tr>
   );

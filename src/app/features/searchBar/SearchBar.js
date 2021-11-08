@@ -1,77 +1,116 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { showSearchResults } from "./searchBarSlice";
+import { Hidden, TextField } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import InputBase from "@mui/material/InputBase";
+import { styled } from "@mui/material/styles";
+import { finalSearchResults } from "./searchBarSlice";
+import { setSearchTerm } from "./searchBarSlice";
+
+import * as React from "react";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+  },
+}));
+const menuId = "primary-search-account-menu";
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    width: "auto",
+  },
+}));
 
 export const SearchBar = (props) => {
   const { search, bookLists, dispatch } = props;
+  const { searchTerm, preSearch, searchResults } = search;
 
   const handleSearch = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-
-    if (searchTerm === "") {
-      return dispatch(showSearchResults([]));
+    const term = e.target.value.toLowerCase();
+    if (term === "") {
+      dispatch(showSearchResults([]));
+      dispatch(setSearchTerm(term));
     }
-    if (searchTerm !== "") {
+    if (term !== "") {
       let filterList = bookLists.filter(
         (book) =>
-          book.title.toLowerCase().includes(searchTerm) ||
-          book.author.toLowerCase().includes(searchTerm)
+          book.title.toLowerCase().includes(term) ||
+          book.author.toLowerCase().includes(term)
       );
-      return dispatch(showSearchResults(filterList));
+      dispatch(setSearchTerm(term));
+      dispatch(showSearchResults(filterList));
     }
   };
 
-  return (
-    <form
-      style={{
-        width: "50%",
-        margin: "auto",
-        marginTop: 40,
-        border: "0.2px solid rgb(59, 82, 63)",
-      }}
-    >
-      <input
-        placeholder="Input a title or author"
-        className="searchInput"
-        onFocus={handleSearch}
-        onChange={handleSearch}
-        type="text"
-        autoComplete="off"
-        style={{
-          height: 40,
-          width: "80%",
-          border: "none",
-        }}
-      ></input>
-      <Link
-        to="/search"
-        //onClick={handleSubmit}
-      >
-        <button
-          className="test"
-          type="submit"
-          style={{
-            color: "white",
-            height: 42,
-            width: "20%",
-            border: "1px solid rgb(59, 82, 63)",
-            backgroundColor: "rgb(59, 82, 63)",
-          }}
-        >
-          Search
-        </button>
-      </Link>
+  const handleSubmit = (e) => {
+    let filterList = bookLists.filter(
+      (book) =>
+        book.title.toLowerCase().includes(searchTerm) ||
+        book.author.toLowerCase().includes(searchTerm)
+    );
 
-      <div
+    dispatch(finalSearchResults(filterList));
+    dispatch(showSearchResults([]));
+  };
+
+  return (
+    <Grid>
+      <form>
+        <Search
+          className="searchInput"
+          onFocus={handleSearch}
+          onChange={handleSearch}
+          autoComplete="off"
+        >
+          <StyledInputBase
+            value={searchTerm}
+            placeholder="Search…"
+            inputProps={{ "aria-label": "search" }}
+          ></StyledInputBase>
+          <Link to="/search" style={{ height: 0, width: 0, overflow: Hidden }}>
+            <button
+              type="submit"
+              variant="contained"
+              onClick={handleSubmit}
+              style={{ height: 0, width: 0, overflow: Hidden, border: 0 }}
+            ></button>
+          </Link>
+        </Search>
+      </form>
+      <Paper
         className="searchChoices"
         style={{
           position: "absolute",
           backgroundColor: "whitesmoke",
           zIndex: "1",
-          width: 662,
+          width: 300,
         }}
       >
-        {search.map((book) => {
+        {preSearch.map((book) => {
           const { rank, author, title, book_image } = book;
 
           return (
@@ -86,18 +125,18 @@ export const SearchBar = (props) => {
                 height: 80,
                 borderBottom: "1px solid lightgrey",
                 textDecoration: "none",
-                color: "rgb(59, 82, 63)",
+                color: "#283593",
               }}
             >
               <img src={book_image} alt={title}></img>
               <div style={{ marginLeft: 6 }}>
                 <h5>{title}</h5>
-                <p>{author}</p>
+                <p style={{ color: "grey" }}>{author}</p>
               </div>
             </Link>
           );
         })}
-      </div>
-    </form>
+      </Paper>
+    </Grid>
   );
 };
