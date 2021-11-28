@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
 import { clearCart } from "../features/shoppingCart/shoppingCartSlice";
-import { Paper } from "@mui/material";
 
 const taxRate = 0.09;
 
@@ -23,7 +22,10 @@ export const Cart = (props) => {
   });
 
   return (
-    <div style={{ width: "80%", margin: "100px auto auto auto" }}>
+    <div
+      className="cartPage container"
+      style={{ width: "80%", margin: "100px auto auto auto" }}
+    >
       <ShoppingCart cart={cart} dispatch={dispatch} />
       <Stack
         spacing={2}
@@ -34,59 +36,63 @@ export const Cart = (props) => {
           justifyContent: "space-around",
         }}
       >
-        <Button variant="outlined">
-          <Link to="/" style={{ textDecoration: "none", color: "#283593" }}>
+        <button className="btn">
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
             Continue Shopping
           </Link>
-        </Button>
-        <Button onClick={handleClearCart} variant="outlined">
-          Clear Shopping Cart
-        </Button>
+        </button>
+        {Object.keys(cart).length === 0 || (
+          <button className="btn" onClick={handleClearCart} variant="outlined">
+            Clear Shopping Cart
+          </button>
+        )}
       </Stack>
-      <Paper
-        elevation={1}
-        style={{
-          width: "40%",
-          margin: "0 0 0 auto",
-          marginTop: 20,
-          textAlign: "right",
-          padding: "1rem 2rem",
-        }}
-      >
-        <table
+      {Object.keys(cart).length === 0 || (
+        <div
           style={{
-            width: "100%",
-            lineHeight: "3rem",
-            textAlign: "right",
-          }}
-        >
-          <thead>
-            <tr>
-              <th>Subtotal: </th>
-              <td>${subtotal}</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Tax: </th>
-              <td>${Math.floor(subtotal * taxRate * 100) / 100}</td>
-            </tr>
-            <tr>
-              <th>Order total : </th>
-              <td>${Math.floor(subtotal * (1 + taxRate) * 100) / 100} </td>
-            </tr>
-          </tbody>
-        </table>
-        <Button
-          onClick={handleClearCart}
-          variant="contained"
-          style={{
+            width: "40%",
+            margin: "0 0 0 auto",
             marginTop: 20,
+            textAlign: "right",
+            padding: "1rem 2rem",
+            border: "1px solid black",
           }}
         >
-          Check Out
-        </Button>
-      </Paper>
+          <table
+            style={{
+              width: "100%",
+              lineHeight: "3rem",
+              textAlign: "right",
+            }}
+          >
+            <thead>
+              <tr>
+                <th>Subtotal: </th>
+                <td>${subtotal}</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Tax: </th>
+                <td>${Math.floor(subtotal * taxRate * 100) / 100}</td>
+              </tr>
+              <tr>
+                <th>Order total : </th>
+                <td>${Math.floor(subtotal * (1 + taxRate) * 100) / 100} </td>
+              </tr>
+            </tbody>
+          </table>
+          <button
+            className="btn"
+            onClick={handleClearCart}
+            style={{
+              marginTop: 20,
+            }}
+          >
+            Check Out
+          </button>
+        </div>
+      )}
     </div>
   );
 };

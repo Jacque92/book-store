@@ -1,65 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: rgb(237, 238, 238);
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Hind", sans-serif;
-}
-p {
-  line-height: 1.2rem;
-  font-family: "Zen Kaku Gothic Antique", sans-serif;
-}
-
-/* Frame */
-
-.recommends {
-  width: 80%;
-  margin: 0 auto;
-  height: 100vh;
-  display: flex;
-  position: relative;
-  justify-content: space-between;
-  margin-top: 400px;
-  top: 0;
-  left: 0;
-}
-.reviews {
-  height: 100vh;
-  margin-top: 40px;
-  display: flex;
-  width: 80%;
-  margin: 10% auto;
-  flex-wrap: wrap;
-}
-
-/* Display */
-.displayRank {
-  display: flex;
-  justify-content: space-between;
-  width: 240px;
-  height: 150px;
-}
-.rankText {
-  width: 160px;
-  display: flex;
-  padding: 0 0.5rem 0.3rem 0.5rem;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.rankCoverBox {
-  width: 100px;
-  height: 100%;
-}
+/* 
 .rankTextBox {
   width: 100%;
   height: 40px;
@@ -131,4 +70,4 @@ th {
 }
 .searchResultItem:hover {
   background-color: #e8eaf6;
-}
+} */

@@ -9,7 +9,7 @@ export const CartItem = (props) => {
   return (
     <tr>
       <td style={{ width: "50%" }}>{title}</td>
-      <td style={{ width: "10%" }}>{price}</td>
+      <td style={{ width: "10%" }}>AUD ${price}</td>
 
       <td style={{ width: "15%" }}>
         <Button size="large" onClick={handleDecrease} value={title}>
@@ -21,7 +21,9 @@ export const CartItem = (props) => {
           +
         </Button>
       </td>
-      <td style={{ width: "15%" }}>{Math.floor(price * amount * 100) / 100}</td>
+      <td style={{ width: "15%" }}>
+        AUD ${Math.floor(price * amount * 100) / 100}
+      </td>
       <td style={{ width: "5%" }}>
         <Button onClick={handleRemoveItem}>Remove</Button>
       </td>

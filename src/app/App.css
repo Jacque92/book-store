@@ -1,0 +1,423 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+}
+
+body {
+  background-color: rgb(237, 238, 238);
+  position: relative;
+}
+
+p {
+  line-height: 1.2rem;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "DM Serif Display", serif;
+}
+.pageTitle {
+  font-size: 40px;
+  height: 200px;
+  width: 70%;
+  padding-top: 100px;
+  margin: auto;
+}
+
+header {
+  padding: 1rem;
+  position: fixed;
+  right: 10%;
+  top: 0;
+  margin: auto;
+}
+
+header li {
+  list-style-type: none;
+  display: inline;
+}
+.activeIcon {
+  display: none;
+}
+/* -------------------------------------------------------------banner ------------------------------------*/
+.banner {
+  width: 100%;
+  height: 800px;
+  background-image: url("../images/banner.png");
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-color: rgb(207, 216, 208);
+}
+
+.bannerText {
+  font-size: 28px;
+  width: 35%;
+  position: relative;
+  top: 300px;
+  left: 18%;
+}
+.bannerText h1 {
+  font-family: "DM Serif Display", serif;
+  margin-bottom: 1rem;
+}
+.searchInput {
+  background-color: whitesmoke;
+  height: 2.5rem;
+  width: 14rem;
+  border-radius: 4px;
+  opacity: 0.5;
+  border: none;
+  padding: 1rem;
+}
+.searchInput:hover,
+.searchInput:focus {
+  opacity: 0.9;
+  box-shadow: rgb(72, 133, 83) 2px 2px 2px;
+  outline: none;
+}
+.btn:hover {
+  box-shadow: rgb(35, 65, 40) 2px 2px 2px;
+}
+
+.searchChoices {
+  background-color: red;
+  font-size: 15px;
+  color: black;
+}
+.btn {
+  background-color: rgb(72, 133, 83);
+  border: none;
+  margin-left: 0.5rem;
+  padding: 0 2rem;
+  height: 2.5rem;
+  opacity: 0.8;
+  border-radius: 4px;
+  color: white;
+  font-weight: 800;
+}
+
+/* layout */
+.container {
+  width: 65%;
+  max-width: 1080px;
+  margin: auto;
+}
+/* .pageContainer {
+  width: 65%;
+  margin: 0 auto 8rem auto;
+} */
+
+/* bestSellers */
+.bestSellers,
+.reviews,
+.carouselAds {
+  margin-top: 8rem;
+}
+.container h2 {
+  text-align: center;
+}
+.line {
+  text-align: center;
+}
+.line button {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  opacity: 0.8;
+  border: none;
+  margin: 0.5rem;
+}
+
+.reviewList {
+  width: 50%;
+  margin: auto;
+}
+
+.displayReview {
+  margin-top: 1.5rem;
+  text-align: justify;
+  width: 100%;
+  border: 1px solid rgb(72, 133, 83, 0.4);
+
+  padding: 2rem 3rem;
+  border-radius: 5px;
+}
+.displayReview p {
+  line-height: 1.5rem;
+}
+.avatar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.avatarBox {
+  width: 30px;
+  height: 30px;
+  margin-right: 1rem;
+  background-color: red;
+  border-radius: 15px;
+  overflow: hidden;
+}
+/* 
+section {
+  width: 70%;
+  margin: 100px auto 0 auto;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  position: relative;
+} */
+
+/* carouselAds */
+.carouselAds {
+  margin-bottom: 8rem;
+  height: 500px;
+  position: relative;
+}
+.carouselBox {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(207, 216, 208);
+}
+.carouselBox .imageBox {
+  width: 45%;
+  overflow: hidden;
+}
+.carouselAds img {
+  height: 100%;
+}
+
+.carouselText {
+  width: 55%;
+  text-align: center;
+
+  padding: 8rem 4rem;
+  line-height: 4rem;
+}
+
+.carouselBtn {
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+
+/*--------------------------------------------------------------category---------------*/
+.category {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 4rem;
+}
+
+.categoryUl li {
+  list-style-type: none;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  border-radius: 6px 0 0 6px;
+  /* border-right: 2px solid rgb(237, 238, 238); */
+}
+.categoryBooks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+}
+.catItem {
+  width: 120px;
+  height: 40px;
+  padding: 0.5rem;
+  border-radius: 5px 5px 0 0;
+}
+.turnPageBtn {
+  margin: 1rem 0 0 auto;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.turnPageBtn button {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  font-weight: 800;
+}
+
+.displayBook {
+  position: relative;
+  width: 25%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: rgb(207, 216, 208);
+  text-align: center;
+  /* border: 1px solid rgb(237, 238, 238); */
+  border: 0.5px solid lightgrey;
+}
+.displayBook .imgBox {
+  width: 110px;
+  height: 200px;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: rgb(35, 65, 40) 2px 2px 4px;
+}
+.displayBook .imgBox:hover {
+  box-shadow: rgb(35, 65, 40) 3px 3px 5px;
+}
+
+.displayBook .imgBox img {
+  height: 100%;
+}
+.displayBook button {
+  margin-top: 1rem;
+}
+.nameNauthor {
+  text-overflow: ellipsis;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+.nameNauthor p {
+  overflow: hidden;
+  height: 19px;
+  text-overflow: ellipsis;
+}
+.nameNauthor p::after {
+  content: "...";
+}
+.displayBook .bntGroup {
+  margin: 1rem auto 0 auto;
+}
+/* ------------------------------------------------------------rank---------------------- */
+.list {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 8px 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.displayRank {
+  width: 300px;
+  display: flex;
+  padding: 1rem;
+  height: 200px;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.rankCoverBox {
+  width: 110px;
+  height: 100%;
+  box-shadow: rgb(35, 65, 40) 2px 2px 4px;
+}
+.rankCoverBox:hover {
+  box-shadow: rgb(35, 65, 40) 3px 3px 5px;
+}
+
+.rankText {
+  text-align: right;
+  height: 100%;
+  width: 140px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.bntGroup {
+  display: flex;
+  width: 50%;
+  align-self: flex-end;
+  justify-content: space-between;
+}
+.priceTag {
+  font-family: "DM Serif Display", serif;
+  color: rgb(19, 108, 34);
+  text-align: right;
+}
+.priceTagLeft {
+  font-family: "DM Serif Display", serif;
+  color: rgb(19, 108, 34);
+  text-align: left;
+}
+
+/* -----------------------------------------single book Page-------------------- */
+
+.bookPage {
+  width: 100%;
+}
+.singleBook {
+  width: 60%;
+  margin: 10rem auto 0 auto;
+}
+.bookBrief {
+  display: flex;
+  flex-direction: row;
+}
+.singleBook .imageBox {
+  width: 260px;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: rgb(35, 65, 40) 2px 2px 4px;
+}
+.singleBook .textBox {
+  height: 300px;
+  width: 50%;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.singleBook .imageBox:hover {
+  box-shadow: rgb(35, 65, 40) 3px 3px 5px;
+}
+/* -----------------------------------------------------------Cart Page-------------------- */
+.cartPage {
+  height: 80vh;
+}
+/* -----------------------------------------Sign-in Page-------------------- */
+.authForm {
+  width: 50%;
+  padding: 5rem 8rem;
+}
+
+.userOnBoard {
+  width: 50%;
+  min-width: 340px;
+  margin: auto;
+  margin-bottom: 200px;
+}
+.authForm form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.userOnBoard button {
+  width: 100%;
+}
+/*------------------------------------------------------------------Footer--------------*/
+footer {
+  position: static;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  height: 120px;
+  background-color: rgb(207, 216, 208);
+}
+footer p {
+  padding-top: 1.2rem;
+}
