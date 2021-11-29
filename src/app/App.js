@@ -2,12 +2,8 @@ import "./App.css";
 import React from "react";
 import { useState } from "react";
 import { Header } from "./components/Header";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  withRouter,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
+import { Switch } from "react-router";
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
 import { Sell } from "./pages/Sell";
@@ -17,8 +13,6 @@ import { Book } from "./pages/Book";
 import { Search } from "./pages/Search";
 import { Error } from "./pages/Error";
 import { Footer } from "./components/Footer";
-
-import useToken from "./hooks/useToken";
 
 function App(props) {
   const { state, dispatch } = props;
