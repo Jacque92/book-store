@@ -1,10 +1,10 @@
 {
   "name": "book-store",
   "version": "0.1.0",
-  "proxy":"http://localhost:8080",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0", 
+    "@emotion/styled": "^11.3.0",
     "@hapi/joi": "^17.1.1",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
@@ -14,14 +14,18 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
+    "netlify-lambda": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.0",
+    "serve-static": "^1.14.1",
+    "serverless-http": "^2.7.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -53,6 +57,7 @@
   "devDependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "netlify-cli": "^8.0.3",
     "nodemon": "^2.0.15"
   }
 }

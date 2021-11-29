@@ -4,7 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 
 const path = require("path");
-
+const port = process.env.PORT || 8080;
 //Import Routes
 const authRoute = require("./src/app/routes/auth");
 
@@ -21,10 +21,16 @@ mongoose.connect(
 
 // //Middleware
 app.use(express.json());
+// app.use(bodyParser);
+
+// app.use("/.netlify/functions/server", authRoute);
 
 //Middleware
 app.use("/user", authRoute);
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log("You are listening to port 8080");
 });
+
+module.exports = app;
+// module.exports.handler = serverless(app);
