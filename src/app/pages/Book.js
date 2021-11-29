@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { addItem } from "../features/shoppingCart/shoppingCartSlice";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Book = (props) => {
   const { bookLists, dispatch } = props;
@@ -9,7 +9,7 @@ export const Book = (props) => {
   const { rank } = useParams();
   const thisBook = bookLists.find((book) => book.rank === parseInt(rank));
   const { author, description, title, book_image, price } = thisBook;
-  const history = useHistory();
+  const history = useNavigate();
   const handleAddItem = (itemToAdd) => {
     dispatch(addItem(itemToAdd));
   };
