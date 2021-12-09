@@ -4,6 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 
 const path = require("path");
+
 const port = process.env.PORT || 8080;
 //Import Routes
 const authRoute = require("./src/app/routes/auth");
