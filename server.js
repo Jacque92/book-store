@@ -11,13 +11,16 @@ const authRoute = require('./src/app/routes/auth');
 dotenv.config({ path: path.resolve(__dirname, './.env') });
 
 //Connect to Database
-mongoose.connect(
-  process.env.DB_CONNECT,
-  { useNewUrlParser: true },
-  async () => {
-    console.log('Successfully connect to Database');
+async function connect() {
+  try {
+    await mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true });
+    console.log('Successfully connected to Database');
+  } catch (error) {
+    console.log('Failed to connect to Database');
+    console.log(error);
   }
-);
+}
+connect();
 
 // //Middleware
 app.use(express.json());
