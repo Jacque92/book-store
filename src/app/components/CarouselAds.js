@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import carousel1 from "../../images/carousel1.jpg";
 import carousel2 from "../../images/carousel2.png";
 import carousel3 from "../../images/carousel3.jpg";
+import { Button } from "@mui/material";
 
 export const CarouselAds = () => {
   const [activeAd, setActiveAd] = useState(carousel1);
@@ -48,11 +49,11 @@ export const CarouselAds = () => {
             efficitur. Phasellus luctus, nunc in vestibulum vulputate, quam
             dolor ultrices risus, eu auctor nibh mi eu nulla.
           </p>
-          <button className="btn">
+          <Button size="large" variant="contained">
             <Link to="/shop" style={{ textDecoration: "none", color: "white" }}>
               Shop Now
             </Link>
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -60,7 +61,7 @@ export const CarouselAds = () => {
         <button
           style={{
             backgroundColor:
-              activeAd === carousel1 ? "rgb(72, 133, 83)" : "grey",
+              activeAd === carousel1 ? "rgb(31, 103, 212)" : "grey",
           }}
           value="carousel1"
           onClick={handleActiveAd}
@@ -68,7 +69,7 @@ export const CarouselAds = () => {
         <button
           style={{
             backgroundColor:
-              activeAd === carousel2 ? "rgb(72, 133, 83)" : "grey",
+              activeAd === carousel2 ? "rgb(31, 103, 212)" : "grey",
           }}
           value="carousel2"
           onClick={handleActiveAd}
@@ -76,7 +77,7 @@ export const CarouselAds = () => {
         <button
           style={{
             backgroundColor:
-              activeAd === carousel3 ? "rgb(72, 133, 83)" : "grey",
+              activeAd === carousel3 ? "rgb(31, 103, 212)" : "grey",
           }}
           value="carousel3"
           onClick={handleActiveAd}

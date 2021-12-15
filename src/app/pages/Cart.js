@@ -22,77 +22,69 @@ export const Cart = (props) => {
   });
 
   return (
-    <div
-      className="cartPage container"
-      style={{ width: "80%", margin: "100px auto auto auto" }}
-    >
-      <ShoppingCart cart={cart} dispatch={dispatch} />
-      <Stack
-        spacing={2}
-        direction="row"
-        style={{
-          width: "40%",
-          margin: "0 0 0 auto",
-          justifyContent: "space-around",
-        }}
-      >
-        <button className="btn">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            Continue Shopping
-          </Link>
-        </button>
-        {Object.keys(cart).length === 0 || (
-          <button className="btn" onClick={handleClearCart} variant="outlined">
-            Clear Shopping Cart
-          </button>
-        )}
-      </Stack>
-      {Object.keys(cart).length === 0 || (
-        <div
+    <div className="cart">
+      <div className="cartPage container">
+        <ShoppingCart cart={cart} dispatch={dispatch} />
+        <Stack
+          spacing={2}
+          direction="row"
           style={{
             width: "40%",
             margin: "0 0 0 auto",
-            marginTop: 20,
-            textAlign: "right",
-            padding: "1rem 2rem",
-            border: "1px solid black",
+            justifyContent: "space-around",
           }}
         >
-          <table
+          {Object.keys(cart).length === 0 || (
+            <Button onClick={handleClearCart} variant="outlined">
+              Clear Shopping Cart
+            </Button>
+          )}
+
+          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+            <Button variant="contained">Continue Shopping</Button>
+          </Link>
+        </Stack>
+        {Object.keys(cart).length === 0 || (
+          <div
             style={{
-              width: "100%",
-              lineHeight: "3rem",
-              textAlign: "right",
-            }}
-          >
-            <thead>
-              <tr>
-                <th>Subtotal: </th>
-                <td>${subtotal}</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th>Tax: </th>
-                <td>${Math.floor(subtotal * taxRate * 100) / 100}</td>
-              </tr>
-              <tr>
-                <th>Order total : </th>
-                <td>${Math.floor(subtotal * (1 + taxRate) * 100) / 100} </td>
-              </tr>
-            </tbody>
-          </table>
-          <button
-            className="btn"
-            onClick={handleClearCart}
-            style={{
+              width: "40%",
+              margin: "0 0 0 auto",
               marginTop: 20,
+              textAlign: "right",
+              padding: "1rem 2rem",
+              border: "1px solid black",
             }}
           >
-            Check Out
-          </button>
-        </div>
-      )}
+            <table
+              style={{
+                width: "100%",
+                lineHeight: "3rem",
+                textAlign: "right",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th>Subtotal: </th>
+                  <td>${subtotal}</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Tax: </th>
+                  <td>${Math.floor(subtotal * taxRate * 100) / 100}</td>
+                </tr>
+                <tr>
+                  <th>Order total : </th>
+                  <td>${Math.floor(subtotal * (1 + taxRate) * 100) / 100} </td>
+                </tr>
+              </tbody>
+            </table>
+            <Button variant="contained" onClick={handleClearCart}>
+              Check Out
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -102,7 +102,7 @@ export const Header = (props) => {
                 // sessionStorage.clear();
                 setToken();
               }}
-              to="/logIn"
+              to="/login"
               style={{
                 color: "black",
                 textDecoration: "none",
@@ -117,7 +117,7 @@ export const Header = (props) => {
           <li>
             <Link
               // onClick={handleStateChange}
-              to="/logIn"
+              to="/login"
               style={{
                 color: "black",
                 textDecoration: "none",

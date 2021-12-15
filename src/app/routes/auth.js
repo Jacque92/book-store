@@ -11,7 +11,7 @@ const {
   loginValidation,
 } = require("../features/validation/validationSlice");
 
-router.post("/register", async (req, res) => {
+router.post("/signup", async (req, res) => {
   //Validate user
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -32,9 +32,9 @@ router.post("/register", async (req, res) => {
 
   try {
     const savedUser = await user.save();
-    res.send(savedUser);
+    // res.send(savedUser);
 
-    // res.send({ user: user._id });
+    res.send({ user: user._id });
   } catch (err) {
     res.status(400).send(err);
   }

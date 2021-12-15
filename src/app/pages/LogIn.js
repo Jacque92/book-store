@@ -1,15 +1,14 @@
 import React from "react";
 import { Authorization } from "../features/authorization/Authorization";
+import Button from "@mui/material/Button";
 import login from "../../images/loginPage.jpg";
 
 export const LogIn = (props) => {
   const { logIn, dispatch, setToken, token } = props;
 
   return (
-    <div style={{ display: "flex" }}>
-      <div style={{ width: "50%", height: "100vh", overflow: "hidden" }}>
-        <img src={login} style={{ width: "100%" }}></img>
-      </div>
+    <div className="login" style={{ display: "flex" }}>
+      <div style={{ width: "50%", height: "100vh", overflow: "hidden" }}></div>
 
       {token ? (
         <div>
@@ -19,7 +18,9 @@ export const LogIn = (props) => {
           >
             You've Logged in.
           </h1>
-          <button className="btn">Go Shopping</button>
+          <Button size="large" type="submit" variant="contained">
+            Shop Now
+          </Button>
         </div>
       ) : (
         <Authorization

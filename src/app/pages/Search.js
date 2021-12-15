@@ -30,30 +30,33 @@ export const Search = (props) => {
                   margin: "0 0 40px 0",
                   display: "flex",
                   padding: 10,
-                  border: "1px solid lightgrey",
+                  border: "1px solid black",
+                  boxShadow: "1px 1px 2px black",
                 }}
               >
                 <div
                   style={{
+                    height: "160px",
                     width: "110px",
-                    height: "180px",
+
                     overflow: "hidden",
+                    backgroundColor: "red",
                   }}
                 >
                   <img
-                    style={{ width: "100%" }}
+                    style={{ height: "auto", width: "100%" }}
                     src={book_image}
                     alt={title}
                   ></img>
                 </div>
                 <div
                   style={{
+                    width: "80%",
                     marginLeft: 10,
-
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    color: "rgb(35, 65, 40)",
+                    color: "black",
                   }}
                 >
                   <div>

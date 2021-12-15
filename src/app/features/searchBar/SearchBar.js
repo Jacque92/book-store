@@ -5,6 +5,7 @@ import { Hidden } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { finalSearchResults } from "./searchBarSlice";
 import { setSearchTerm } from "./searchBarSlice";
+import { Button } from "@mui/material";
 
 import * as React from "react";
 import Paper from "@mui/material/Paper";
@@ -50,7 +51,7 @@ export const SearchBar = (props) => {
 
   return (
     <div>
-      <form>
+      <form style={{ display: "flex", alignItems: "center" }}>
         <input
           className="searchInput"
           value={searchTerm}
@@ -59,15 +60,16 @@ export const SearchBar = (props) => {
           autoComplete="off"
           placeholder="Book…"
         ></input>
-        <Link to="/search" style={{ height: 0, width: 0, overflow: Hidden }}>
-          <button
-            class="btn"
-            type="submit"
-            variant="contained"
-            onClick={handleSubmit}
-          >
+        <Link
+          to="/search"
+          style={{
+            textDecoration: "none",
+            marginLeft: "0.5rem",
+          }}
+        >
+          <Button size="large" variant="contained" onClick={handleSubmit}>
             Search
-          </button>
+          </Button>
         </Link>
       </form>
       <div

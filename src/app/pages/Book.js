@@ -1,22 +1,23 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { addItem } from "../features/shoppingCart/shoppingCartSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigation } from "@react-navigation/native";
 
+import { Button } from "@mui/material";
 export const Book = (props) => {
   const { bookLists, dispatch } = props;
 
   const { rank } = useParams();
   const thisBook = bookLists.find((book) => book.rank === parseInt(rank));
   const { author, description, title, book_image, price } = thisBook;
-  const history = useNavigate();
+  // const navigation = useNavigation();
   const handleAddItem = (itemToAdd) => {
     dispatch(addItem(itemToAdd));
   };
   return (
     <div className="bookPage">
       <div className="singleBook">
-        <button
+        {/* <Button
           style={{
             fontSize: "18px",
             marginBottom: "2rem",
@@ -24,11 +25,11 @@ export const Book = (props) => {
             borderBottom: "1px solid black",
           }}
           onClick={() => {
-            history.goBack();
+            navigation.goBack();
           }}
         >
           {"<< "}Back
-        </button>
+        </Button> */}
         <div className="bookBrief">
           <div className="imageBox">
             <img
@@ -47,14 +48,13 @@ export const Book = (props) => {
               <p>{author}</p>
             </div>
             <h3 className="priceTagLeft">AUD$ {price}</h3>
-            <button
-              style={{ marginLeft: 0 }}
-              className="btn"
+            <Button
+              variant="contained"
               onClick={() => handleAddItem(thisBook)}
               value={title}
             >
               Add To Cart
-            </button>
+            </Button>
             <p>{description}</p>
           </div>
         </div>

@@ -42,7 +42,18 @@ function App(props) {
             element={<Cart cart={state.cart} dispatch={dispatch} />}
           ></Route>
           <Route
-            path="/logIn"
+            path="/login"
+            element={
+              <LogIn
+                token={token}
+                setToken={setToken}
+                logIn={state.logIn}
+                dispatch={dispatch}
+              />
+            }
+          ></Route>
+          <Route
+            path="/signup"
             element={
               <LogIn
                 token={token}

@@ -5,7 +5,7 @@ export const Shop = (props) => {
   const { search, categoryLists, dispatch } = props;
 
   return (
-    <div className="shopPage">
+    <div className="shop">
       <h1 className="pageTitle">All Books</h1>
       <CategoryList categoryLists={categoryLists} dispatch={dispatch} />
     </div>

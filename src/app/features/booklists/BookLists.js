@@ -51,14 +51,14 @@ export const BookLists = (props) => {
           onClick={handleActive}
           style={{
             backgroundColor:
-              pageNumber === 1 ? "rgb(72, 133, 83)" : "rgb(207, 216, 208)",
+              pageNumber === 1 ? " rgb(31, 103, 212)" : "rgb(207, 216, 208)",
           }}
         ></button>
         <button
           value="2"
           style={{
             backgroundColor:
-              pageNumber === 2 ? "rgb(72, 133, 83)" : "rgb(207, 216, 208)",
+              pageNumber === 2 ? "  rgb(31, 103, 212)" : "rgb(207, 216, 208)",
           }}
           onClick={handleActive}
         ></button>
@@ -66,7 +66,7 @@ export const BookLists = (props) => {
           value="3"
           style={{
             backgroundColor:
-              pageNumber === 3 ? "rgb(72, 133, 83)" : "rgb(207, 216, 208)",
+              pageNumber === 3 ? " rgb(31, 103, 212)" : "rgb(207, 216, 208)",
           }}
           onClick={handleActive}
         ></button>

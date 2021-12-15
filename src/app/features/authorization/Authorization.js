@@ -1,10 +1,8 @@
-import * as React from "react";
-
-import TextField from "@mui/material/TextField";
-import PropTypes from "prop-types";
-
+import React from "react";
 import { useState } from "react";
-import verified from "../../routes/verifyToken";
+import { LoginForm } from "../../components/form/LoginForm";
+import { SignUpForm } from "../../components/form/SignUpForm";
+import { Routes, Route } from "react-router";
 
 async function loginUser(credentials) {
   const response = await fetch("/user/login", {
@@ -15,7 +13,6 @@ async function loginUser(credentials) {
     body: JSON.stringify(credentials),
   });
   const message = await response.text();
-  const header = await response.header;
 
   if (response.ok) {
     //token
@@ -25,16 +22,35 @@ async function loginUser(credentials) {
     return { error: message };
   }
 }
+//user sign up
+async function signupUser(credentials) {
+  const response = await fetch("/user/register", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(credentials),
+  });
+  const message = await response.text();
+  console.log(message);
+
+  if (response.ok) {
+    console.log(message);
+    return { userInfo: message };
+  } else {
+    return { error: message };
+  }
+}
 
 export const Authorization = (props) => {
   const { dispatch, token, setToken } = props;
+  const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [errorMessage, setErrorMessage] = useState();
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
     const { authToken, error } = await loginUser({
       email,
       password,
@@ -44,57 +60,45 @@ export const Authorization = (props) => {
     console.log(token);
   };
 
-  return (
-    <div className="authForm">
-      <h1 className="pageTitle">Login to Your Account</h1>
-      <div className="userOnBoard">
-        <form onSubmit={handleLoginSubmit}>
-          <TextField
-            required
-            name="email"
-            id="outlined-helperText"
-            label="Email"
-            //defaultValue="token"
-            // helperText="token"
-            style={{ marginBottom: 30 }}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <TextField
-            required
-            name="password"
-            id="outlined-helperText"
-            label="Password"
-            //defaultValue="test123"
-            // helperText="test123"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <p style={{ marginTop: "0.5rem", height: 24, color: "red" }}>
-            {errorMessage}
-          </p>
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    const { userInfo, error } = await signupUser({
+      name,
+      email,
+      password,
+    });
 
-          <button
-            className="btn"
-            type="submit"
-            style={{ marginLeft: 0, height: 50 }}
-          >
-            Log in
-          </button>
+    setErrorMessage(error);
+    console.log(name);
+  };
+  const [isNewUser, setIsNewUser] = useState(false);
+  const handleReturnUser = () => {
+    setIsNewUser(false);
+  };
+  const handleNewUser = () => {
+    setIsNewUser(true);
+  };
 
-          <a href="#">Register</a>
-        </form>
-        <button
-          className="btn"
-          type="submit"
-          style={{ height: 50, marginLeft: 0 }}
-        >
-          Login with google
-        </button>
-        <p>{token}</p>
-      </div>
-    </div>
+  return !isNewUser ? (
+    <LoginForm
+      handleNewUser={handleNewUser}
+      handleLoginSubmit={handleLoginSubmit}
+      setToken={setToken}
+      token={token}
+      dispatch={dispatch}
+      errorMessage={errorMessage}
+      setEmail={setEmail}
+      setPassword={setPassword}
+    />
+  ) : (
+    <SignUpForm
+      handleReturnUser={handleReturnUser}
+      handleSignupSubmit={handleSignupSubmit}
+      dispatch={dispatch}
+      errorMessage={errorMessage}
+      setEmail={setEmail}
+      setPassword={setPassword}
+      setName={setName}
+    />
   );
-};
-
-Authorization.propTypes = {
-  setToken: PropTypes.func.isRequired,
 };

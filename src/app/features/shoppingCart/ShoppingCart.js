@@ -30,7 +30,7 @@ export const ShoppingCart = (props) => {
           padding: "2rem 0",
         }}
       >
-        Your cart is empty.
+        Oops, your cart is still empty...
       </h1>
     );
   }

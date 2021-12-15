@@ -6,8 +6,8 @@
 }
 
 body {
-  background-color: rgb(237, 238, 238);
   position: relative;
+  background-color: rgb(237, 238, 238);
 }
 
 p {
@@ -25,6 +25,7 @@ h4 {
   width: 70%;
   padding-top: 100px;
   margin: auto;
+  font-family: "Abril Fatface", cursive;
 }
 
 header {
@@ -42,6 +43,13 @@ header li {
 .activeIcon {
   display: none;
 }
+.home {
+  background-image: url("../images/loginPage.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 /* -------------------------------------------------------------banner ------------------------------------*/
 .banner {
   width: 100%;
@@ -49,7 +57,7 @@ header li {
   background-image: url("../images/banner.png");
   background-repeat: no-repeat;
   background-position: right bottom;
-  background-color: rgb(207, 216, 208);
+  /* background-color: rgb(207, 216, 208); */
 }
 
 .bannerText {
@@ -65,10 +73,10 @@ header li {
 }
 .searchInput {
   background-color: whitesmoke;
-  height: 2.5rem;
+  height: 2.6rem;
   width: 14rem;
   border-radius: 4px;
-  opacity: 0.5;
+  opacity: 0.6;
   border: none;
   padding: 1rem;
 }
@@ -116,6 +124,7 @@ header li {
 .carouselAds {
   margin-top: 8rem;
 }
+
 .container h2 {
   text-align: center;
 }
@@ -140,10 +149,10 @@ header li {
   margin-top: 1.5rem;
   text-align: justify;
   width: 100%;
-  border: 1px solid rgb(72, 133, 83, 0.4);
-
   padding: 2rem 3rem;
-  border-radius: 5px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px black;
 }
 .displayReview p {
   line-height: 1.5rem;
@@ -176,7 +185,7 @@ section {
 
 /* carouselAds */
 .carouselAds {
-  margin-bottom: 8rem;
+  /* padding-bottom: 16rem; */
   height: 500px;
   position: relative;
 }
@@ -187,11 +196,13 @@ section {
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  background-color: rgb(207, 216, 208);
+
+  /* background-color: rgb(207, 216, 208); */
 }
 .carouselBox .imageBox {
   width: 45%;
   overflow: hidden;
+  border-radius: 10px;
 }
 .carouselAds img {
   height: 100%;
@@ -210,12 +221,19 @@ section {
   bottom: 30px;
   right: 50px;
 }
-
+/*--------------------------------------------------------------shop page---------------*/
+.shop {
+  background-image: url("../images/loginPage.jpg");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+}
 /*--------------------------------------------------------------category---------------*/
 .category {
   display: flex;
   flex-direction: row;
-  margin-bottom: 4rem;
 }
 
 .categoryUl li {
@@ -238,17 +256,13 @@ section {
   border-radius: 5px 5px 0 0;
 }
 .turnPageBtn {
-  margin: 1rem 0 0 auto;
+  margin: 0 0 0 auto;
   width: 30%;
   display: flex;
   justify-content: space-between;
-}
-.turnPageBtn button {
-  width: 100px;
-  height: 30px;
-  border: none;
-  border-bottom: 1px solid black;
-  font-weight: 800;
+  position: absolute;
+  right: 4rem;
+  top: -3rem;
 }
 
 .displayBook {
@@ -258,11 +272,11 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
-  background-color: rgb(207, 216, 208);
+  padding: 0 2rem 4rem 2rem;
+  /* background-color: rgb(207, 216, 208); */
   text-align: center;
   /* border: 1px solid rgb(237, 238, 238); */
-  border: 0.5px solid lightgrey;
+  /* border: 0.5px solid lightgrey; */
 }
 .displayBook .imgBox {
   width: 110px;
@@ -278,9 +292,7 @@ section {
 .displayBook .imgBox img {
   height: 100%;
 }
-.displayBook button {
-  margin-top: 1rem;
-}
+
 .nameNauthor {
   text-overflow: ellipsis;
   margin-top: 0.5rem;
@@ -342,12 +354,12 @@ section {
 }
 .priceTag {
   font-family: "DM Serif Display", serif;
-  color: rgb(19, 108, 34);
+  color: rgb(31, 103, 212);
   text-align: right;
 }
 .priceTagLeft {
   font-family: "DM Serif Display", serif;
-  color: rgb(19, 108, 34);
+  color: rgb(31, 103, 212);
   text-align: left;
 }
 
@@ -384,40 +396,64 @@ section {
   box-shadow: rgb(35, 65, 40) 3px 3px 5px;
 }
 /* -----------------------------------------------------------Cart Page-------------------- */
-.cartPage {
-  height: 80vh;
+.cart {
+  background-image: url("../images/loginPage.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: cover;
+  height: 100vh;
 }
-/* -----------------------------------------Sign-in Page-------------------- */
+
+.cartPage {
+  padding-top: 200px;
+}
+/* -----------------------------------------Sign-up/login Page-------------------- */
+
+.login {
+  background-image: url("../images/loginPage.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: rgb(207, 216, 208);
+  background-size: cover;
+}
 .authForm {
-  width: 50%;
-  padding: 5rem 8rem;
+  width: 440px;
+  height: 660px;
+  margin: 8rem 8rem;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px black;
 }
 
 .userOnBoard {
   width: 50%;
+  height: 660px;
+  padding: 40px 0;
   min-width: 340px;
   margin: auto;
   margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .authForm form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 40px;
 }
 .userOnBoard button {
   width: 100%;
 }
 /*------------------------------------------------------------------Footer--------------*/
 footer {
-  position: static;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   text-align: center;
-  height: 120px;
-  background-color: rgb(207, 216, 208);
+  height: 70px;
 }
 footer p {
-  padding-top: 1.2rem;
+  padding-top: 0.5rem;
+  font-size: 14px;
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { loadData } from "../categoryList/categoryListSlice";
 import { DisplayBook } from "../../components/DisplayBook";
 import { addItem, removeItem } from "../shoppingCart/shoppingCartSlice";
+import Button from "@mui/material/Button";
 
 export const CategoryList = (props) => {
   const { categoryLists, dispatch } = props;
@@ -53,17 +54,17 @@ export const CategoryList = (props) => {
 
   return (
     <div class="category container">
-      <ul className="categoryUl">
+      <ul
+        className="categoryUl"
+        style={{
+          borderRight: "1px solid black",
+        }}
+      >
         {Object.keys(isActive).map((key) => {
           return (
             <li
               style={{
-                backgroundColor: isActive[key]
-                  ? "rgb(207, 216, 208)"
-                  : "rgb(237, 238, 238)",
-                border: isActive[key]
-                  ? "none"
-                  : "0.5px solid rgb(207, 216, 208)",
+                borderRight: isActive[key] ? "5px solid black" : "none",
               }}
               onClick={() => handleCategory(key)}
             >
@@ -95,19 +96,25 @@ export const CategoryList = (props) => {
           ))
           .slice((pageNum - 1) * 8, pageNum * 8)}
         <div class="turnPageBtn">
-          <button
-            style={{ opacity: pageNum === 1 ? 0 : 1 }}
+          <Button
+            style={{
+              color: "black",
+              opacity: pageNum === 1 ? 0 : 1,
+            }}
             onClick={handlePrev}
           >
             {"<< "}Prev
-          </button>
+          </Button>
 
-          <button
-            style={{ opacity: pageNum < getTotalPage() ? 1 : 0 }}
+          <Button
+            style={{
+              color: "black",
+              opacity: pageNum < getTotalPage() ? 1 : 0,
+            }}
             onClick={handleNext}
           >
             Next{" >>"}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
