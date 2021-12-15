@@ -67,9 +67,17 @@ export const Authorization = (props) => {
       email,
       password,
     });
-
-    setErrorMessage(error);
-    console.log(name);
+    if (!error) {
+      const { authToken, error } = await loginUser({
+        email,
+        password,
+      });
+      setToken(authToken);
+      setErrorMessage(error);
+      console.log(token);
+    } else {
+      setErrorMessage(error);
+    }
   };
   const [isNewUser, setIsNewUser] = useState(false);
   const handleReturnUser = () => {

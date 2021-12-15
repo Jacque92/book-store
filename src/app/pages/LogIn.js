@@ -2,6 +2,7 @@ import React from "react";
 import { Authorization } from "../features/authorization/Authorization";
 import Button from "@mui/material/Button";
 import login from "../../images/loginPage.jpg";
+import { Link } from "react-router-dom";
 
 export const LogIn = (props) => {
   const { logIn, dispatch, setToken, token } = props;
@@ -18,9 +19,11 @@ export const LogIn = (props) => {
           >
             You've Logged in.
           </h1>
-          <Button size="large" type="submit" variant="contained">
-            Shop Now
-          </Button>
+          <Link to="/shop" style={{ textDecoration: "none" }}>
+            <Button size="large" type="submit" variant="contained">
+              Shop Now
+            </Button>
+          </Link>
         </div>
       ) : (
         <Authorization
