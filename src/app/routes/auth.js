@@ -11,7 +11,7 @@ const {
   loginValidation,
 } = require("../features/validation/validationSlice");
 
-router.post("/signup", async (req, res) => {
+router.post("/register", async (req, res) => {
   //Validate user
   const { error } = registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
