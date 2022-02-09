@@ -13,17 +13,6 @@ export const Home = (props) => {
     dispatch(showSearchResults([]));
   };
 
-  // const [data, setData] = useState(null);
-
-  // useEffect(async () => {
-  //   const res = await fetch("/api");
-  //   console.log(res);
-  //   fetch("/api")
-  //     .then((res) => res.json())
-  //     .then((data) => setData(data.message));
-  // }, []);
-  // console.log(data);
-
   return (
     <div className="home" onClick={handleBlur}>
       <Banner search={search} bookLists={bookLists} dispatch={dispatch} />

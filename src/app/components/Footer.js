@@ -4,7 +4,7 @@ export const Footer = () => {
   return (
     <footer>
       <p>Privacy Policy | Terms Conditions | Contact Us</p>
-      <p>© 2021 Books Pty Ltd </p>
+      <p>© 2022 Books Pty Ltd </p>
     </footer>
   );
 };

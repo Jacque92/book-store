@@ -2,12 +2,7 @@ import "./App.css";
 import React from "react";
 import { useState } from "react";
 import { Header } from "./components/Header";
-import {
-  BrowserRouter as Router,
-  Route,
-  withRouter,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
@@ -25,99 +20,85 @@ function App(props) {
   // const { token, setToken } = useToken();
 
   return (
-    <withRouter>
-      <Router>
-        <Header
-          setToken={setToken}
-          token={token}
-          logIn={state.logIn}
-          cart={state.cart}
-          bookLists={state.bookLists}
-          search={state.search}
-          dispatch={dispatch}
-        />
-        <Routes>
-          <Route
-            path="/cart"
-            element={<Cart cart={state.cart} dispatch={dispatch} />}
-          ></Route>
-          <Route
-            path="/login"
-            element={
-              <LogIn
-                token={token}
-                setToken={setToken}
-                logIn={state.logIn}
-                dispatch={dispatch}
-              />
-            }
-          ></Route>
-          <Route
-            path="/signup"
-            element={
-              <LogIn
-                token={token}
-                setToken={setToken}
-                logIn={state.logIn}
-                dispatch={dispatch}
-              />
-            }
-          ></Route>
-          <Route
-            exact
-            path="/"
-            element={
-              <Home
-                bookLists={state.bookLists}
-                search={state.search}
-                dispatch={dispatch}
-              />
-            }
-          ></Route>
+    <Router>
+      <Header
+        setToken={setToken}
+        token={token}
+        logIn={state.logIn}
+        cart={state.cart}
+        bookLists={state.bookLists}
+        search={state.search}
+        dispatch={dispatch}
+      />
+      <Routes>
+        <Route
+          path="/cart"
+          element={<Cart cart={state.cart} dispatch={dispatch} />}
+        ></Route>
+        <Route
+          path="/login"
+          element={
+            <LogIn
+              token={token}
+              setToken={setToken}
+              logIn={state.logIn}
+              dispatch={dispatch}
+            />
+          }
+        ></Route>
+        <Route
+          path="/signup"
+          element={
+            <LogIn
+              token={token}
+              setToken={setToken}
+              logIn={state.logIn}
+              dispatch={dispatch}
+            />
+          }
+        ></Route>
+        <Route
+          exact
+          path="/"
+          element={
+            <Home
+              bookLists={state.bookLists}
+              search={state.search}
+              dispatch={dispatch}
+            />
+          }
+        ></Route>
 
-          <Route
-            exact
-            path="/shop"
-            element={
-              <Shop
-                search={state.search}
-                dispatch={dispatch}
-                categoryLists={state.categoryLists}
-              />
-            }
-          ></Route>
+        <Route
+          exact
+          path="/shop"
+          element={
+            <Shop
+              search={state.search}
+              dispatch={dispatch}
+              categoryLists={state.categoryLists}
+            />
+          }
+        ></Route>
 
-          {/* <Route exact path="/sell">
-            <Sell />
-          </Route> */}
+        <Route
+          path="/NYTBestSellers/:rank"
+          element={<Book bookLists={state.bookLists} dispatch={dispatch} />}
+        ></Route>
 
-          <Route
-            path="/NYTBestSellers/:rank"
-            element={<Book bookLists={state.bookLists} dispatch={dispatch} />}
-            // children={<Book bookLists={state.bookLists} dispatch={dispatch} />}
-          ></Route>
+        <Route
+          path="/books/:rank"
+          element={<Book bookLists={state.categoryLists} dispatch={dispatch} />}
+        ></Route>
 
-          <Route
-            path="/books/:rank"
-            element={
-              <Book bookLists={state.categoryLists} dispatch={dispatch} />
-            }
-          ></Route>
-          {/* <Route
-            path="/books/:rank"
-            children={
-              <Book bookLists={state.categoryLists} dispatch={dispatch} />
-            }
-          ></Route> */}
-          <Route
-            path="/search"
-            element={<Search search={state.search} dispatch={dispatch} />}
-          ></Route>
-          <Route path="/*" element={<Error />}></Route>
-        </Routes>
-        <Footer />
-      </Router>
-    </withRouter>
+        <Route
+          path="/search"
+          element={<Search search={state.search} dispatch={dispatch} />}
+        ></Route>
+        <Route path="/*" element={<Error />}></Route>
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

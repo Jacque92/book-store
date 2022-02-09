@@ -1,33 +1,26 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Badge from "@mui/material/Badge";
 import { showSearchResults } from "../features/searchBar/searchBarSlice";
+
+const linkStyle = {
+  color: "black",
+  textDecoration: "none",
+  padding: "0.5rem 2.5rem",
+};
 
 export const Header = (props) => {
   const { cart, bookLists, search, dispatch, logIn, token, setToken } = props;
   const amounts = Object.values(cart);
 
+  const location = useLocation().pathname.split("/").pop();
+
   let cartAmount = 0;
+
   amounts.map((book) => {
     const { amount } = book;
     return (cartAmount += amount);
   });
-
-  const initialState = {
-    Home: false,
-    Shop: false,
-    Sell: false,
-    Cart: false,
-    LogIn: false,
-  };
-
-  const [linkState, setLinkState] = useState({ ...initialState, Home: false });
-
-  const handleStateChange = (e) => {
-    const activeLabel = e.target.innerHTML;
-    setLinkState({ ...initialState, [activeLabel]: true });
-  };
 
   const handleBlur = () => {
     dispatch(showSearchResults([]));
@@ -35,59 +28,37 @@ export const Header = (props) => {
 
   return (
     <header onClick={handleBlur}>
+      <Link to="/" style={linkStyle}>
+        LOGO
+      </Link>
       <ul>
         <li>
           <Link
-            // onClick={handleStateChange}
             to="/"
-            style={{
-              color: "black",
-              textDecoration: "none",
-              borderBottom: linkState.Home ? "1px solid black" : "none",
-              padding: "0.5rem 2.5rem",
-            }}
+            style={{ ...linkStyle, color: location ? "black" : "grey" }}
           >
             Home
           </Link>
         </li>
         <li>
           <Link
-            // onClick={handleStateChange}
             to="/shop"
             style={{
-              color: "black",
-              textDecoration: "none",
-              borderBottom: linkState.Shop ? "1px solid black" : "none",
-              padding: "0.5rem 2.5rem",
+              ...linkStyle,
+              color: location === "shop" ? "grey" : "black",
             }}
           >
             Shop
           </Link>
         </li>
-        {/* <li>
-          <Link
-            onClick={handleStateChange}
-            to="/sell"
-            style={{
-              color: "black",
-              textDecoration: "none",
-              borderBottom: linkState.Sell ? "1px solid black" : "none",
-              padding: "0.5rem 2.5rem",
-            }}
-          >
-            Sell
-          </Link>
-        </li> */}
+
         <li>
           <Badge badgeContent={cartAmount} color="secondary">
             <Link
-              // onClick={handleStateChange}
               to="/cart"
               style={{
-                color: "black",
-                textDecoration: "none",
-                borderBottom: linkState.Cart ? "1px solid black" : "none",
-                padding: "0.5rem 2.5rem",
+                ...linkStyle,
+                color: location === "cart" ? "grey" : "black",
               }}
             >
               Cart
@@ -97,17 +68,14 @@ export const Header = (props) => {
         {token ? (
           <li>
             <Link
-              // onClick={handleStateChange}
               onClick={() => {
                 // sessionStorage.clear();
                 setToken();
               }}
               to="/login"
               style={{
-                color: "black",
-                textDecoration: "none",
-                borderBottom: linkState.LogIn ? "1px solid black" : "none",
-                padding: "0.5rem 2.5rem",
+                ...linkStyle,
+                color: location === "login" ? "grey" : "black",
               }}
             >
               Logout
@@ -116,13 +84,10 @@ export const Header = (props) => {
         ) : (
           <li>
             <Link
-              // onClick={handleStateChange}
               to="/login"
               style={{
-                color: "black",
-                textDecoration: "none",
-                borderBottom: linkState.LogIn ? "1px solid black" : "none",
-                padding: "0.5rem 2.5rem",
+                ...linkStyle,
+                color: location === "login" ? "grey" : "black",
               }}
             >
               LogIn

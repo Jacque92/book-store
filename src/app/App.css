@@ -4,7 +4,9 @@
   box-sizing: border-box;
   font-family: "Zen Kaku Gothic Antique", sans-serif;
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   position: relative;
   background-color: rgb(237, 238, 238);
@@ -29,25 +31,27 @@ h4 {
 }
 
 header {
-  padding: 1rem;
+  width: 100%;
   position: fixed;
-  right: 10%;
   top: 0;
   margin: auto;
+  padding: 1rem 6%;
+  text-align: right;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
 }
 
 header li {
   list-style-type: none;
   display: inline;
 }
+header li a {
+  font-family: "Abril Fatface", cursive;
+}
+
 .activeIcon {
   display: none;
-}
-.home {
-  background-image: url("../images/loginPage.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 /* -------------------------------------------------------------banner ------------------------------------*/
@@ -57,7 +61,7 @@ header li {
   background-image: url("../images/banner.png");
   background-repeat: no-repeat;
   background-position: right bottom;
-  /* background-color: rgb(207, 216, 208); */
+  background-color: rgb(207, 216, 208);
 }
 
 .bannerText {
@@ -223,11 +227,6 @@ section {
 }
 /*--------------------------------------------------------------shop page---------------*/
 .shop {
-  background-image: url("../images/loginPage.jpg");
-  background-position: 0 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   height: 100vh;
 }
 /*--------------------------------------------------------------category---------------*/
@@ -397,10 +396,6 @@ section {
 }
 /* -----------------------------------------------------------Cart Page-------------------- */
 .cart {
-  background-image: url("../images/loginPage.jpg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: cover;
   height: 100vh;
 }
 
@@ -410,10 +405,6 @@ section {
 /* -----------------------------------------Sign-up/login Page-------------------- */
 
 .login {
-  background-image: url("../images/loginPage.jpg");
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-color: rgb(207, 216, 208);
   background-size: cover;
 }
 .authForm {

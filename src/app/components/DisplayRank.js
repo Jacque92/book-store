@@ -7,6 +7,8 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 
+import { StarRating } from "../features/starRating/StarRating";
+
 export const DisplayRank = (props) => {
   const { handleAddItem, handleRemoveItem, bookinfo } = props;
   const { rank, author, title, book_image, price } = bookinfo;
@@ -51,12 +53,12 @@ export const DisplayRank = (props) => {
         </Link>
       </div>
       <div className="rankText">
-        <div style={{ height: 10 }}></div>
         <div style={{ height: "2rem" }}>
           <p style={{ lineHeight: "1rem", fontWeight: 900 }}>{title}</p>
           <p style={{ color: "grey", lineHeight: "2rem" }}>{author}</p>
         </div>
         <p className="priceTag">AUD ${price}</p>
+        <StarRating />
         <div className="bntGroup">
           {isAddFav ? (
             <FavoriteIcon onClick={handleAddFav} fontSize="small" />

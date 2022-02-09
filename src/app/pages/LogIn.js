@@ -1,7 +1,7 @@
 import React from "react";
 import { Authorization } from "../features/authorization/Authorization";
 import Button from "@mui/material/Button";
-import login from "../../images/loginPage.jpg";
+
 import { Link } from "react-router-dom";
 
 export const LogIn = (props) => {

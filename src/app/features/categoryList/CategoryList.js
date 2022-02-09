@@ -53,16 +53,17 @@ export const CategoryList = (props) => {
   };
 
   return (
-    <div class="category container">
+    <div className="category container">
       <ul
         className="categoryUl"
         style={{
           borderRight: "1px solid black",
         }}
       >
-        {Object.keys(isActive).map((key) => {
+        {Object.keys(isActive).map((key, i) => {
           return (
             <li
+              key={i}
               style={{
                 borderRight: isActive[key] ? "5px solid black" : "none",
               }}
@@ -95,7 +96,7 @@ export const CategoryList = (props) => {
             />
           ))
           .slice((pageNum - 1) * 8, pageNum * 8)}
-        <div class="turnPageBtn">
+        <div className="turnPageBtn">
           <Button
             style={{
               color: "black",
