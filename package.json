@@ -1,7 +1,6 @@
 {
   "name": "book-store",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
   "main": "server.js",
   "engines": {
     "node": "v14.17.6"
