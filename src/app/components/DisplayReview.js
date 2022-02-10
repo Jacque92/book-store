@@ -1,5 +1,5 @@
 import React from "react";
-import ava from "../../images/ava.jpg";
+
 export const DisplayReview = () => {
   return (
     <div className="displayReview">
@@ -15,7 +15,11 @@ export const DisplayReview = () => {
       </p>
       <div className="avatar">
         <div className="avatarBox">
-          <img src={ava} alt="avatar" style={{ width: "100%" }}></img>
+          <img
+            src="../images/ava.jpg"
+            alt="avatar"
+            style={{ width: "100%" }}
+          ></img>
         </div>
         <h4>John Smith</h4>
       </div>

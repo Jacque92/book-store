@@ -1,45 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import carousel1 from "../../images/carousel1.jpg";
-import carousel2 from "../../images/carousel2.png";
-import carousel3 from "../../images/carousel3.jpg";
 import { Button } from "@mui/material";
 
+const carouselPics = [
+  "../images/carousel1.jpg",
+  "../images/carousel2.jpg",
+  "../images/carousel3.jpg",
+];
+
 export const CarouselAds = () => {
-  const [activeAd, setActiveAd] = useState(carousel1);
+  const [activeAd, setActiveAd] = useState(0);
+
+  const picChange = setInterval(() => {
+    setActiveAd(activeAd === carouselPics.length - 1 ? 0 : activeAd + 1);
+    clearInterval(picChange);
+  }, 5000);
 
   const handleActiveAd = (e) => {
-    const activeKey = e.target.value;
-    setActiveAd(carouselPics[activeKey]);
-  };
-  const carouselPics = {
-    carousel1: carousel1,
-    carousel2: carousel2,
-    carousel3: carousel3,
+    setActiveAd(parseInt(e.target.value));
   };
 
-  setTimeout(() => {
-    if (activeAd === carousel1) {
-      setActiveAd(carousel2);
-    } else if (activeAd === carousel2) {
-      setActiveAd(carousel3);
-    } else {
-      setActiveAd(carousel1);
-    }
-  }, 6000);
-
-  const btnActive = {
-    backgroundColor: "red",
-  };
-  const btnInactive = {
-    backgroundColor: "grey",
-  };
   return (
     <div className="carouselAds container">
       <div className="carouselBox">
         <div className="imageBox">
-          <img className="adPic" src={activeAd}></img>
+          <img className="adPic" src={carouselPics[activeAd]}></img>
         </div>
         <div className="carouselText">
           <h1>Find Your Next Books Here</h1>
@@ -58,30 +44,18 @@ export const CarouselAds = () => {
       </div>
 
       <div className="carouselBtn line">
-        <button
-          style={{
-            backgroundColor:
-              activeAd === carousel1 ? "rgb(31, 103, 212)" : "grey",
-          }}
-          value="carousel1"
-          onClick={handleActiveAd}
-        ></button>
-        <button
-          style={{
-            backgroundColor:
-              activeAd === carousel2 ? "rgb(31, 103, 212)" : "grey",
-          }}
-          value="carousel2"
-          onClick={handleActiveAd}
-        ></button>
-        <button
-          style={{
-            backgroundColor:
-              activeAd === carousel3 ? "rgb(31, 103, 212)" : "grey",
-          }}
-          value="carousel3"
-          onClick={handleActiveAd}
-        ></button>
+        {carouselPics.map((picture, i) => {
+          return (
+            <button
+              key={i}
+              value={i}
+              onClick={handleActiveAd}
+              style={{
+                backgroundColor: activeAd === i ? "rgb(31, 103, 212)" : "grey",
+              }}
+            ></button>
+          );
+        })}
       </div>
     </div>
   );

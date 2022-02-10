@@ -1,5 +1,4 @@
 import React from "react";
-import banner from "../../images/banner.png";
 import { SearchBar } from "../features/searchBar/SearchBar";
 
 export const Banner = (props) => {
